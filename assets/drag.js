@@ -28,6 +28,10 @@ function initializeDragging() {
         }
     }
 
+    document.addEventListener('newPiecePosition', function(e) {
+        document.getElementById('piece-position').textContent = JSON.stringify(e.detail);
+    });
+
     function endDragging(e) {
         if (piece) {
             var col = Math.round((e.clientX - offsetX) / 75);  // Adjust these values based on your board size
@@ -39,8 +43,12 @@ function initializeDragging() {
             selectedPiece = null;
             document.getElementById('checkerboard').style.pointerEvents = 'auto'; // Re-enable pointer events on the chart
             document.getElementById('checkerboard').style.cursor = 'default'; // Change cursor back to default
+    
+            // Send the new position to Dash
+            let newPosition = {col: col, row: row};
+            window.dispatchEvent(new CustomEvent('newPiecePosition', {detail: newPosition}));
         }
-    }
+    }    
 
     function handleDoubleClick(e) {
         if (!doubleClick) {
