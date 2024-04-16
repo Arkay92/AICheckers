@@ -1,3 +1,6 @@
 .js-plotly-plot .plotly .main-svg .draglayer {
     cursor: pointer !important;
 }
+.js-plotly-plot .plotly .user-select-none {
+    margin: 50px auto 0;
+}
