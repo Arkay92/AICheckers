@@ -4,3 +4,7 @@
 .js-plotly-plot .plotly .user-select-none {
     margin: 50px auto 0;
 }
+button#training-button {
+    display: block;
+    margin: 20px auto 20px;
+}
